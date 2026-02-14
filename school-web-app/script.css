@@ -1,0 +1,43 @@
+// Admission Button
+document.getElementById("admissionBtn").addEventListener("click", function() {
+    alert("Admission form will be available soon!");
+});
+
+// Form Validation
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address!");
+        return;
+    }
+
+    alert("Thank you! Your message has been sent.");
+    this.reset();
+});
+
+// Email Validation
+function validateEmail(email) {
+    const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    return pattern.test(email);
+}
+
+// Smooth Scroll
+document.querySelectorAll("nav a").forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
+
